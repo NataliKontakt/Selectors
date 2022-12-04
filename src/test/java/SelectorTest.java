@@ -17,7 +17,7 @@ public class SelectorTest {
 
     @BeforeAll
     static void SetUpAll() {
-        System.setProperty("webdriver.chrome.driver", ".\\driver\\win\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
     }
 
     @BeforeEach
