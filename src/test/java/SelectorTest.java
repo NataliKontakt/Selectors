@@ -17,15 +17,10 @@ public class SelectorTest {
     private static WebDriver driver;
 
 
-
     @BeforeAll
     static void SetUpAll() {
         System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
+        
     }
 
     @BeforeEach
@@ -89,6 +84,7 @@ public class SelectorTest {
         String actual = driver.findElement(By.cssSelector("span[data-test-id=phone] span.input__sub")).getText().trim();
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldTestNegativeV4() throws InterruptedException {
         driver.get("http://localhost:9999");
