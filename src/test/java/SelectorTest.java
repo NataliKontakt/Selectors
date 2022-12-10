@@ -55,7 +55,7 @@ public class SelectorTest {
     }
 
     @Test
-    void shouldTestNegativeV1() {
+    void shouldTestNegativeLatinName() {
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Petrov Ivan");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+89128466666");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -66,7 +66,7 @@ public class SelectorTest {
     }
 
     @Test
-    void shouldTestNegativeV2() {
+    void shouldTestNegativeSymbolsInTheName() {
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Перов + Иван");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+89128466666");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -77,7 +77,7 @@ public class SelectorTest {
     }
 
     @Test
-    void shouldTestNegativeV3() {
+    void shouldTestNegativePhoneWithoutPlus() {
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Петров Иван");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("89128466666");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -88,7 +88,7 @@ public class SelectorTest {
     }
 
     @Test
-    void shouldTestNegativeV4() {
+    void shouldTestNegativePhoneHasMoreSymbols() {
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Петров Иван");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+8912846666666");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -99,18 +99,18 @@ public class SelectorTest {
     }
 
     @Test
-    void shouldTestNegativeV5() {
+    void shouldTestNegativeCheckboxNotClicked() {
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Петров Иван");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+89128466666");
 
         driver.findElement(By.className("button")).click();
         String expected = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
-        String actual = driver.findElement(By.cssSelector("label")).getText().trim();
+        String actual = driver.findElement(By.cssSelector("[data-test-id=agreement].input_invalid")).getText().trim();
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldTestNegativeV6() {
+    void shouldTestNegativeEmptyNameField() {
 
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+89128466666");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -121,7 +121,7 @@ public class SelectorTest {
     }
 
     @Test
-    void shouldTestNegativeV7() {
+    void shouldTestNegativeEmptyPhoneField() {
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Петров Иван");
 
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
